@@ -1,0 +1,85 @@
+========================================================================
+  SECURLY CLASSROOM — VULNERABILITY EXPLOITABILITY REPORT
+========================================================================
+
+  Timestamp : 2026-03-06 13:09:25
+  Hostname  : SD26-S111-13
+  Username  : [my name]
+  Platform  : win32 (nt)
+  Python    : 3.12.4
+
+  ADMINISTRATOR PRIVILEGES: NO
+
+------------------------------------------------------------------------
+
+  Summary: 4 exploitable, 2 not exploitable, 6 unknown
+
+[EXPLOITABLE] V1: Insecure IPC Channel
+  Detail: Named pipes reachable from this (non-admin) user:
+    SlingshotServer (ClassroomUserApp) (\\.\pipe\ClassroomUserApp) — pipe opened successfully
+    LaunchAgent (ClassroomAgentApp) (\\.\pipe\ClassroomAgentApp) — pipe opened successfully
+
+[UNKNOWN] V2: Everyone Authorization (UpgradeRequest)
+  Detail: Pipe not found — agent/service is not running.
+
+[NOT EXPLOITABLE] V3: Command Injection / Unvalidated Path Execution
+  Detail: Payloads correctly blocked:
+    Blocked (file not found after canonicalization): '..\\..\\Windows\\System32\\cmd.exe'
+    Blocked (file not found after canonicalization): 'C:\\Windows\\System32\\cmd.exe /c whoami'
+    Blocked (file not found after canonicalization): 'C:\\Windows\\notepad.exe\x00.txt'
+    Blocked (file not found after canonicalization): '\\\\attacker\\share\\evil.exe'
+    Blocked (file not found after canonicalization): 'calc'
+
+[NOT EXPLOITABLE] V4: Path Traversal (MoveFileToDirectory)
+  Detail: Traversal payloads correctly blocked/stripped:
+    Stripped to basename: '..\\..\\..\\Windows\\System32\\config\\SAM' -> 'SAM'
+    Stripped to basename: '..\\..\\..\\..\\etc\\passwd' -> 'passwd'
+    Blocked (traversal detected): '....//....//Windows/System32/cmd.exe'
+    Stripped to basename: 'subdir\\..\\..\\..\\secret.txt' -> 'secret.txt'
+  Safe filenames:
+    Safe name allowed: 'legitimate_file.docx' (basename: 'legitimate_file.docx')
+    Safe name allowed: 'report.pdf' (basename: 'report.pdf')
+
+[UNKNOWN] V6: Wrong Remoting Type (ActivateRemotingObject)
+  Detail: Source file not found: C:\Users\WinOSServices\Service\LaunchCtlAppManager.cs
+
+[UNKNOWN] V8: Empty Catch Blocks
+  Detail: Source file not found: C:\Users\WinOSServices\Service\SlingshotServer.cs
+
+[EXPLOITABLE] V9+: Hardcoded Encryption Keys
+  Detail: Hardcoded keys in source:
+    FileHelper.cs: source not found (C:\Users\Common\FileSystem\FileHelper.cs)
+    ClassroomSettings.cs: source not found (C:\Users\Common\ClassroomSettings.cs)
+    LogEncryption.cs: source not found (C:\Users\Common\Logging\LogEncryption.cs)
+
+[EXPLOITABLE] V10+: ProgramData File ACLs
+  Detail: Directory ACL:
+C:\ProgramData\Securly NT AUTHORITY\SYSTEM:(I)(OI)(CI)(F)
+                       BUILTIN\Administrators:(I)(OI)(CI)(F)
+                       CREATOR OWNER:(I)(OI)(CI)(IO)(F)
+                       BUILTIN\Users:(I)(OI)(CI)(RX)
+                       BUILTIN\Users:(I)(CI)(WD,AD,WEA,WA)
+
+Successfully processed 1 files; Failed processing 0 files
+    Current user CAN write to Securly data directory.
+
+[EXPLOITABLE] V11+: IPC Named Pipe Reachability
+  Detail: Found 2 Securly pipe(s): ClassroomUserApp, ClassroomAgentApp
+    These pipes may be accessible to non-privileged users.
+
+[UNKNOWN] V12+: Settings File Decryption
+  Detail: No encrypted settings files found on disk.
+
+[UNKNOWN] V13+: OpenURL Scheme Validation
+  Detail: Source not found: C:\Users\WinOSServices\Service\SlingshotServer.cs
+
+[UNKNOWN] V14+: Shell Metacharacter in Arguments
+  Detail: Source not found: C:\Users\WinOSServices\Service\SlingshotServer.cs
+
+------------------------------------------------------------------------
+
+  This report was generated WITHOUT administrator privileges.
+  If you are running as a standard user and see 'EXPLOITABLE' results,
+  those vulnerabilities could reasonably be attacked by a non-privileged user.
+
+========================================================================
