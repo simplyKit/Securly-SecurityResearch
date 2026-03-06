@@ -1,7 +1,7 @@
 # Securly-SecurityResearch
 This is my collection of files/tooling as well as report about my security research of Securly Classroom for Windows.
 
-As of 3/6/2026 everything within this repository has been reported to Securly.
+As of 3/6/2026 everything within this repository has been reported to Securly to hopefully be resolved.
 
 ## Special Thanks
 ---
