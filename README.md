@@ -6,7 +6,8 @@ As of 3/6/2026 everything within this repository has been reported to Securly to
 ## Special Thanks
 ---
 A special thanks for helping with this to
-- [@simplyKit](https://github.com/simplyKit)
-- [@thatWest7014](https://github.com/thatwest7014)
+- [@simplyKit](https://github.com/simplyKit)/[@thatWest7014](https://github.com/thatwest7014)
+- Clayton (Discussion)
+- Kajoel (Discussion)
 - Bentley (IT Director)
 - And others
