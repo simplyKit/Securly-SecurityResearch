@@ -47,7 +47,7 @@ The evidence I have for these exploits can be seen in my log file, `hellothere.v
 The exploits and vulnerabilities that I have shared in this repository are intended for security use or cannot be used directly to achive any potential goal.
 
 The activitymonitor oversight is included as I believe that it is critical that Securly is aware of the potential issues that can arise from that being in the production application as part of the clay vulnerability.
-Every other piece of code within this repository is design for testing only and cannot be used to directly achive any security oversight like running administrator commands without additional tools.
+Every other piece of code within this repository is designed for testing only and cannot be used to directly achive any security oversight like running administrator commands without additional tools.
 
 I'm doing this not only because it seemed interesting to me, but also so that Securly can patch or resolve some of the vulnerabilities I've mention or that are included in this repo.
 
