@@ -26,7 +26,7 @@ Through this and just generally looking around I was able to connect several dom
 - [techpilotlabs.com](https://techpilotlabs.com) (This is what Securly uses to create the block pages.) (Also the name of the pug is Pepita)
 - [oauth.dyknow.me](https://dyknow.me) (For the landing website see [dyknow.com](https://dyknow.com))
 - Each installation/domain seemingly has a similar hard-coded UID that seemingly is used for API requests. I didn't look into this one much so I have not clue why.
-- Generally most requests are send via POST to `https://org<id>.deviceconsole.securly.com` except for what seems to be a background updater which sends requests to https://classroom-updates.securly.com/v1/update. (This also includes URL params like the machine name, username, domain, etc.)
+- Generally most requests are sent via POST to `https://org<id>.deviceconsole.securly.com` except for what seems to be a background updater which sends requests to https://classroom-updates.securly.com/v1/update. (This also includes URL params like the machine name, username, domain, etc.)
 - The browser extension seems to be most commonly bypassed using `javascript://*` or via the (Stop) and (Unregister) buttons inside of `chrome://serviceworker-internals` based on [https://www.reddit.com/r/SecurlyBypasses/](https://www.reddit.com/r/SecurlyBypasses/). (I am not endorsing bypassing Securly, just providing a source.)
 - There is some seemingly arbitrary requests to `https://org<id>.deviceconsole.securly.com`/win/fire and /win/handle which are not documented within Securly in any capacity and without a tool like Wireshark it's basically impossible to tell exactly what the request is from the client side.
 ---
